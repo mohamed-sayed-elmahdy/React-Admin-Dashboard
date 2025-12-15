@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useCallback } from "react";
 
-const ClickContext = createContext();
+const UiContext = createContext();
 
 const initialState = {
   chat: false,
@@ -9,7 +9,7 @@ const initialState = {
   notification: false,
 };
 
-export function ClickProvider({ children }) {
+export function UIProvider({ children }) {
   const [isClicked, setIsClicked] = useState(initialState);
 
   const handleClick = useCallback((key) => {
@@ -22,7 +22,13 @@ export function ClickProvider({ children }) {
 
   const value = { isClicked, handleClick, closeAll };
 
-  return <ClickContext.Provider value={value}>{children}</ClickContext.Provider>;
+  return <UiContext.Provider value={value}>{children}</UiContext.Provider>;
 }
 
-export const useClick = () => useContext(ClickContext);
+export const useUi = () => {
+  const context = useContext(UiContext);
+  if (context === undefined) {
+    throw new Error("useUi must be used within a UIProvider");
+  }
+  return context;
+}

@@ -5,7 +5,6 @@ import '@/index.css'
 import { BrowserRouter } from "react-router-dom";
 import { ContextProvider } from '@/contexts/ContextProvider';
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>

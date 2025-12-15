@@ -117,7 +117,7 @@ export default function Sidebar() {
     ];
 
     return (
-        <div className="flex text-(--text)" style={{boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.4)'}}>
+        <div className="flex text-(--text)" style={{boxShadow: '5px -14px 15px rgba(0, 0, 0, 0.4)'}}>
             {/* Mobile Drawer */}
             <div
                 className={`fixed inset-0 bg-black/45 bg-opacity-50 z-10 lg:hidden transition-opacity duration-300

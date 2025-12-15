@@ -13,12 +13,12 @@
 // }
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { SidebarProvider } from "@/contexts/SidebarContext";
-import { ClickProvider } from "@/contexts/ClickContext";
+import { UIProvider } from "@/contexts/UIContext";
 
 const providers = [
   ThemeProvider,
   SidebarProvider,
-  ClickProvider,
+  UIProvider,
 ];
 export function ContextProvider({ children }) {
   return providers.reduceRight(

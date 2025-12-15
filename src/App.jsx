@@ -24,7 +24,6 @@ import {
 } from '@/pages';
 import { FiSettings } from 'react-icons/fi';
 
-import '@/app.css';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -32,17 +31,16 @@ function App() {
   return (
     <div className='flex relative w-full'>
       {/* setting button */}
-      <div className='fixed right-4 bottom-4' style={{ zIndex: '1000' }}>
-        <Tooltip content="Settings" posistion="start-1/2 -translate-x-1/2 top-0 -translate-y-2 bg-(--primary) text-(--text)">
+      <div className='fixed right-4 bottom-4 ' style={{ zIndex: '1000' }}>
+        <Tooltip content="Settings" position="top left" customCss>
           <button type="button" className=''>
-
             <FiSettings style={{ color: "var(--text)" }}className='text-3xl cursor-pointer' />
           </button>
         </Tooltip>
       </div>
 
       {/* sidebar */}
-      <div className='sidebar z-50 shadow-end-3xl' style={{ zIndex: '1000' }}>
+      <div className='sidebar z-50 bg-(--background)' style={{ zIndex: '1000' }}>
         <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} isSidebarMobileOpen={isSidebarMobileOpen} setIsSidebarMobileOpen={setIsSidebarMobileOpen} />
       </div>
       {/* main content (Navbar, routes and footer) */}
