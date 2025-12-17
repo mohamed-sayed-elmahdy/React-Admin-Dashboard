@@ -26,8 +26,7 @@ import { FiSettings } from 'react-icons/fi';
 
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isSidebarMobileOpen, setIsSidebarMobileOpen] = useState(false);
+
   return (
     <div className='flex relative w-full'>
       {/* setting button */}
@@ -41,11 +40,11 @@ function App() {
 
       {/* sidebar */}
       <div className='sidebar z-50 bg-(--background)' style={{ zIndex: '1000' }}>
-        <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} isSidebarMobileOpen={isSidebarMobileOpen} setIsSidebarMobileOpen={setIsSidebarMobileOpen} />
+        <Sidebar />
       </div>
       {/* main content (Navbar, routes and footer) */}
       <div className={` min-h-screen w-full flex flex-col bg-(--background-secondary)`}>
-        <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} isSidebarMobileOpen={isSidebarMobileOpen} setIsSidebarMobileOpen={setIsSidebarMobileOpen} />
+        <Navbar/>
         <div className={` p-4 flex-1 `} style={{ zIndex: "100" }}>
           <Routes>
             {/* Dashboard */}

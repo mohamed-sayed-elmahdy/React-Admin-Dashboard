@@ -157,9 +157,9 @@ export default function Sidebar() {
                                         to={item.href}
                                         className={({ isActive }) =>
                                             `text-(--text) text-[13.5px] flex items-center ${isSidebarOpen ? "justify-start" : "justify-center"
-                                            } gap-2 py-1.5 px-2 rounded-md hover:bg-gray-900 dark:hover:bg-white/20 transition-all duration-200 ${isActive ? "bg-white/10 text-200 dark:bg-white/20" : ""
-                                            }`
+                                            } gap-2 py-1.5 px-2 rounded-md hover:bg-gray-900 dark:hover:bg-white/20 transition-all duration-200 ${isActive ? " bg-(--primary) text-(--textWhite)" : "bg-(--background)"}`
                                         }
+                                         onClick={() => toggleMobileSidebar(false)}
                                     >
                                         {item.icon}
                                         {isSidebarOpen && <span>{item.label}</span>}
