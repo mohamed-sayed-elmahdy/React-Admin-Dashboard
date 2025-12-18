@@ -4,7 +4,7 @@ export default function Tooltip({ children, content, position, customCss = "" })
   const [show, setShow] = useState(false);
 
   // Base classes for tooltip
-  let tooltipClasses = `bg-(--primary) text-(--text) absolute px-3 py-2 text-sm rounded-lg z-50 whitespace-nowrap shadow-2xl animate-tooltip ${customCss}`;
+  let tooltipClasses = `hidden md:block bg-(--primary) text-(--text) absolute px-3 py-2 text-sm rounded-lg z-50 whitespace-nowrap shadow-2xl animate-tooltip ${customCss}`;
 
   // Adjust position based on prop
   switch (position) {

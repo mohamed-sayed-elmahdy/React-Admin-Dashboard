@@ -120,7 +120,7 @@ export default function Sidebar() {
         <div className="flex text-(--text)" style={{ boxShadow: '5px -14px 15px rgba(0, 0, 0, 0.4)' }}>
             {/* Mobile Drawer */}
             <div
-                className={`lg:hidden fixed inset-0 bg-black/45 bg-opacity-50 z-40  transition-opacity duration-300
+                className={`lg:hidden fixed inset-0 bg-black/45 bg-opacity-50 z-40  transition-all duration-300
               ${isSidebarMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
                 `}
                 onClick={() => toggleMobileSidebar(false)}
@@ -128,16 +128,14 @@ export default function Sidebar() {
                 <div
                     className={`
                        fixed top-0 left-0 h-full w-64 bg-(--background) text-(--text) shadow
-                        transform transition-transform duration-300
+                        transform transition-all duration-300
                          ${isSidebarMobileOpen ? "translate-x-0" : "-translate-x-full"}
                           `}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <button className="mb-6 p-2" onClick={() => toggleMobileSidebar(false)}>
-                        <FaTimes className="w-6 h-6" />
-                    </button>
+                
 
-                    <nav className="space-y-2 px-3 overflow-auto h-[calc(100vh-3.5rem)]">
+                    <nav className="mt-11 space-y-2 px-3 overflow-auto h-[calc(100vh-3.5rem)]">
                         {navItems.map((section) => (
                             <div key={section.category} className="mt-4">
 
