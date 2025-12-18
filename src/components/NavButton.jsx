@@ -8,9 +8,8 @@ function NavButton({ title, popKey, icon, color, dotColor }) {
     return (
 
         <Tooltip content={title} position="bottom center">
-            <button onClick={() => handleClick(popKey)} type="button" className='cursor-pointer text-xl rounded-full relative'>
+            <button onClick={() => handleClick(popKey)} type="button" className='flex items-center justify-center relative cursor-pointer rounded-full'>
                 {icon}
-                {dotColor && <span className="absolute top-[-2.5px] right-0 rounded-full w-2 h-2" style={{ background: "var(--primary)" }} />}
             </button>
         </Tooltip>
 
