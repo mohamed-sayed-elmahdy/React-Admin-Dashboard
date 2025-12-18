@@ -120,7 +120,7 @@ export default function Sidebar() {
         <div className="flex text-(--text)" style={{ boxShadow: '5px -14px 15px rgba(0, 0, 0, 0.4)' }}>
             {/* Mobile Drawer */}
             <div
-                className={`fixed inset-0 bg-black/45 bg-opacity-50 z-40 lg:hidden transition-opacity duration-300
+                className={`lg:hidden fixed inset-0 bg-black/45 bg-opacity-50 z-40  transition-opacity duration-300
               ${isSidebarMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
                 `}
                 onClick={() => toggleMobileSidebar(false)}
