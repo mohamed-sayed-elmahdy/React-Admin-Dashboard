@@ -180,12 +180,12 @@
   background-color: transparent;
 }
     .custom-navbar-shadow {
-    box-shadow: 17px 5px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 17px 2px 10px rgba(0, 0, 0, 0.2);
   }
 
 @media (max-width: 1024px) {
     .custom-navbar-shadow {
-    box-shadow: -2px 5px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
   }
 }
 

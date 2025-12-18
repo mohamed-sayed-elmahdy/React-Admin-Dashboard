@@ -117,7 +117,7 @@ export default function Sidebar() {
     ];
 
     return (
-        <div className="flex text-(--text)" style={{ boxShadow: '5px -14px 15px rgba(0, 0, 0, 0.4)' }}>
+        <div className="flex text-(--text)" style={{ boxShadow: '2px -14px 15px rgba(0, 0, 0, 0.2)' }}>
             {/* Mobile Drawer */}
             <div
                 className={`lg:hidden fixed inset-0 bg-black/45 bg-opacity-50 z-40  transition-all duration-300
@@ -135,7 +135,7 @@ export default function Sidebar() {
                 >
                 
 
-                    <nav className="mt-11 space-y-2 px-3 overflow-auto h-[calc(100vh-3.5rem)]">
+                    <nav className="mt-11 space-y-2 px-3 overflow-auto">
                         {navItems.map((section) => (
                             <div key={section.category} className="mt-4">
 
@@ -180,7 +180,7 @@ export default function Sidebar() {
                         {isSidebarOpen ? null : <FaBars size={17} />}
                     </button>
                 </div>
-                <nav className="space-y-2 px-3 overflow-auto h-[calc(100vh-3.5rem)]">
+                <nav className="space-y-2 px-3 overflow-auto ">
                     {navItems.map((section) => (
                         <div key={section.category} className="mt-4">
                             {/* Category Title */}
