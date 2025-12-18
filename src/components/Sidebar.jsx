@@ -8,7 +8,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useSidebar } from "@/contexts/SidebarContext";
 export default function Sidebar() {
-       const { isSidebarOpen, toggleSidebar, isSidebarMobileOpen, toggleMobileSidebar } = useSidebar();
+    const { isSidebarOpen, toggleSidebar, isSidebarMobileOpen, toggleMobileSidebar } = useSidebar();
 
     const navItems = [
         {
@@ -117,10 +117,10 @@ export default function Sidebar() {
     ];
 
     return (
-        <div className="flex text-(--text)" style={{boxShadow: '5px -14px 15px rgba(0, 0, 0, 0.4)'}}>
+        <div className="flex text-(--text)" style={{ boxShadow: '5px -14px 15px rgba(0, 0, 0, 0.4)' }}>
             {/* Mobile Drawer */}
             <div
-                className={`fixed inset-0 bg-black/45 bg-opacity-50 z-10 lg:hidden transition-opacity duration-300
+                className={`fixed inset-0 bg-black/45 bg-opacity-50 z-40 lg:hidden transition-opacity duration-300
               ${isSidebarMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
                 `}
                 onClick={() => toggleMobileSidebar(false)}
@@ -159,7 +159,7 @@ export default function Sidebar() {
                                             `text-(--text) text-[13.5px] flex items-center ${isSidebarOpen ? "justify-start" : "justify-center"
                                             } gap-2 py-1.5 px-2 rounded-md hover:bg-gray-900 dark:hover:bg-white/20 transition-all duration-200 ${isActive ? " bg-(--primary) text-(--textWhite)" : "bg-(--background)"}`
                                         }
-                                         onClick={() => toggleMobileSidebar(false)}
+                                        onClick={() => toggleMobileSidebar(false)}
                                     >
                                         {item.icon}
                                         {isSidebarOpen && <span>{item.label}</span>}
@@ -191,7 +191,7 @@ export default function Sidebar() {
                                     {section.category}
                                 </p>
                             ) : (
-                             section.category === "Dashboard" ? null :  <hr className="my-2 border-(--primary)" />
+                                section.category === "Dashboard" ? null : <hr className="my-2 border-(--primary)" />
                             )}
 
                             {/* Links */}

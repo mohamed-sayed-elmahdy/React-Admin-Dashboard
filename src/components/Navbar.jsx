@@ -19,7 +19,7 @@ import myimage from "@/assets/mypic.jpg";
 
 export default function Navbar() {
   const { isSidebarOpen, toggleSidebar, isSidebarMobileOpen, toggleMobileSidebar } = useSidebar();
-  const { handleClick, closeAll } = useUi();
+  const { openPopup, closePopup } = useUi();
   const navRef = useRef(null);
   const popupRef = useRef(null);
 
@@ -31,14 +31,14 @@ export default function Navbar() {
       ) {
         return;
       }
-      closeAll();
+      closePopup();
     }
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [closeAll]);
+  }, [closePopup]);
 
   return (
     <nav className={`flex items-center justify-between relative px-2 py-3 md:p-4  bg-(--background) text-(--text) w-full transition-all duration-300 ${isSidebarMobileOpen ? "shadow-none" : "custom-navbar-shadow"} `} style={{ zIndex: '1000' }}>
@@ -60,7 +60,7 @@ export default function Navbar() {
           <NavButton title="Notifications" popKey="notification" icon={<RiNotification3Line className="w-5 h-5" />} color="blue" dotColor="red" />
           <NavButton title="Chat" popKey="chat" icon={<BsChatLeft className="w-4 h-4 md:w-5 md:h-5" />} color="blue" dotColor="red" />
           <Tooltip content="Profile" position="bottom center">
-            <button onClick={() => handleClick("userProfile")} type="button" className='flex items-center gap-2 justify-center cursor-pointer text-xl rounded-full relative'>
+            <button onClick={() => openPopup("userProfile")} type="button" className='flex items-center gap-2 justify-center cursor-pointer text-xl rounded-full relative'>
                 <img src={myimage} alt=" profile" className="rounded-full w-4 h-4  md:w-6 md:h-6" />
                <div className="flex items-center gap-0">
                  <span className="text-[12px] hidden md:block font-extralight">Mohamed S.</span>

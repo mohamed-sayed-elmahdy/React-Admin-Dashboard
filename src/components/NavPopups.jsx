@@ -5,8 +5,15 @@ import UserProfile from "@/components/UserProfile";
 import { useUi } from "@/contexts/UIContext";
 
 export default function NavPopups({ popupRef, className = "" }) {
-  const { isClicked } = useUi();
-  if (!Object.values(isClicked).some(Boolean)) return null;
+  const { activePopup } = useUi();
+  if (!activePopup) return null;
+
+    const MAP = {
+    cart: <Cart />,
+    chat: <Chat  />,
+    notification: <Notification/>,
+    userProfile: <UserProfile/>,
+  };
 
   return (
     <div ref={popupRef} className={`
@@ -17,10 +24,7 @@ export default function NavPopups({ popupRef, className = "" }) {
         animate-slide-in-left
         ${className}
       `} >
-      {isClicked.cart && <Cart />}
-      {isClicked.notification && <Notification />}
-      {isClicked.chat && <Chat />}
-      {isClicked.userProfile && <UserProfile />}
+      {MAP[activePopup]}
     </div>
   );
 }

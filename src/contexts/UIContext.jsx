@@ -2,27 +2,17 @@ import { createContext, useContext, useState, useCallback } from "react";
 
 const UiContext = createContext();
 
-const initialState = {
-  chat: false,
-  cart: false,
-  userProfile: false,
-  notification: false,
-};
-
 export function UIProvider({ children }) {
-  const [isClicked, setIsClicked] = useState(initialState);
+  const [activePopup, setActivePopup] = useState(null);
 
-  const handleClick = useCallback((key) => {
-    setIsClicked({ ...initialState, [key]: true });
-  }, []);
+  const openPopup = (key) => setActivePopup(key);
+  const closePopup = () => setActivePopup(null);
 
-  const closeAll = useCallback(() => {
-    setIsClicked(initialState);
-  }, []);
-
-  const value = { isClicked, handleClick, closeAll };
-
-  return <UiContext.Provider value={value}>{children}</UiContext.Provider>;
+  return (
+    <UiContext.Provider value={{ activePopup, openPopup, closePopup }}>
+      {children}
+    </UiContext.Provider>
+  );
 }
 
 export const useUi = () => {
