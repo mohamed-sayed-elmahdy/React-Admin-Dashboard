@@ -41,7 +41,7 @@ export default function Navbar() {
   }, [closePopup]);
 
   return (
-    <nav className={`flex items-center justify-between relative px-2 py-3 md:p-4  bg-(--background) text-(--text) w-full transition-all duration-300 ${isSidebarMobileOpen ? "shadow-none" : "custom-navbar-shadow"} `} style={{ zIndex: '1000' }}>
+    <nav className={`flex items-center justify-between relative px-2 py-3 md:p-4  bg-background text-(--text) w-full transition-all duration-300 ${isSidebarMobileOpen ? "shadow-none" : "custom-navbar-shadow"} `} style={{ zIndex: '1000' }}>
       <div>
         <button className="hidden lg:block cursor-pointer" onClick={toggleSidebar}>
           < BsLayoutSidebarInset className={`${isSidebarOpen ? "visible" : "invisible"} w-4 h-4`} />
