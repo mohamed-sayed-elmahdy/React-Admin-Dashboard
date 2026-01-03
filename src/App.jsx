@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Tooltip from '@/components/Tooltip';
 import Sidebar from '@/components/Sidebar';
+import { FiSettings } from 'react-icons/fi';
 import {
   Overview,
   Orders,
@@ -22,57 +23,35 @@ import {
   Pyramid,
   Stacked
 } from '@/pages';
-import { FiSettings } from 'react-icons/fi';
+import { useSidebar } from '@/contexts/SidebarContext';
+import Main from './components/Main';
 
 
 function App() {
+const { isSidebarOpen, isSidebarMobileOpen, toggleSidebar, toggleMobileSidebar, closeMobileSidebar } = useSidebar();
 
   return (
-    <div className='flex relative w-full'>
-      {/* setting button */}
-      <div className='fixed right-4 bottom-4 ' style={{ zIndex: '1000' }}>
+    <div className='flex relative w-full flex-col'>
+      {/* Settings Button */}
+      <div className='fixed right-4 bottom-4' style={{ zIndex: 1000 }}>
         <Tooltip content="Settings" position="top left" customCss>
-          <button type="button" className=''>
-            <FiSettings style={{ color: "var(--text)" }}className='text-3xl cursor-pointer' />
+          <button type="button">
+            <FiSettings style={{ color: "var(--text)" }} className='text-3xl cursor-pointer' />
           </button>
         </Tooltip>
       </div>
+      <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={toggleSidebar} isSidebarMobileOpen={isSidebarMobileOpen} setIsSidebarMobileOpen={toggleMobileSidebar} />
 
-      {/* sidebar */}
-      <div className='sidebar z-50 bg-(--background)' style={{ zIndex: '1000' }}>
-        <Sidebar />
+      <div className='fixed h-full sidebar z-50 bg-background' style={{ zIndex: 1000, boxShadow: '2px -14px 15px rgba(0, 0, 0, 0.2)' }} >
+        <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={toggleSidebar} isSidebarMobileOpen={isSidebarMobileOpen} setIsSidebarMobileOpen={toggleMobileSidebar} />
       </div>
-      {/* main content (Navbar, routes and footer) */}
-      <div className={` min-h-screen w-full flex flex-col bg-(--background-secondary)`}>
-        <Navbar/>
-        <div className={` p-4 flex-1 `} style={{ zIndex: "100" }}>
-          <Routes>
-            {/* Dashboard */}
-            <Route path="/" element={<Overview />} />
-            {/* pages */}
-            <Route path="/Orders" element={<Orders />} />
-            <Route path="/Employees" element={<Employees />} />
-            <Route path="/Customers" element={<Customers />} />
-            {/* Apps */}
-            <Route path="/Calendar" element={<Calendar />} />
-            <Route path="/Kanban" element={<Kanban />} />
-            <Route path="/Editor" element={<Editor />} />
-            <Route path="/Color-Picker" element={<ColorPicker />} />
-            {/* Charts */}
-            <Route path="/Line" element={<Line />} />
-            <Route path="/Area" element={<Area />} />
-            <Route path="/Bar" element={<Bar />} />
-            <Route path="/Pie" element={<Pie />} />
-            <Route path="/Financial" element={<Financial />} />
-            <Route path="/Color-Mapping" element={<ColorMapping />} />
-            <Route path="/Pyramid" element={<Pyramid />} />
-            <Route path="/Stacked" element={<Stacked />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
+
+
+      {/* Main Content */}
+
+        <Main />
     </div>
-  )
+  );
 }
 
 export default App;

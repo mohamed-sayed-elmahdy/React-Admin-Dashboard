@@ -6,9 +6,8 @@ import {
 import { MdStackedLineChart } from "react-icons/md";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { useSidebar } from "@/contexts/SidebarContext";
-export default function Sidebar() {
-    const { isSidebarOpen, toggleSidebar, isSidebarMobileOpen, toggleMobileSidebar } = useSidebar();
+
+export default function Sidebar({ isSidebarOpen, setIsSidebarOpen, isSidebarMobileOpen, setIsSidebarMobileOpen }) {
 
     const navItems = [
         {
@@ -117,17 +116,17 @@ export default function Sidebar() {
     ];
 
     return (
-        <div className="flex text-(--text)" style={{ boxShadow: '2px -14px 15px rgba(0, 0, 0, 0.2)' }}>
+        <div className="flex text-(--text) ">
             {/* Mobile Drawer */}
             <div
                 className={`lg:hidden fixed inset-0 bg-black/45 bg-opacity-50 z-40  transition-all duration-300
               ${isSidebarMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
                 `}
-                onClick={() => toggleMobileSidebar(false)}
+                onClick={() => setIsSidebarMobileOpen(false)}
             >
                 <div
                     className={`
-                       fixed top-0 left-0 h-full w-64 bg-(--background) text-(--text) shadow
+                       fixed top-0 left-0 h-full w-64 bg-background text-(--text) shadow
                         transform transition-all duration-300
                          ${isSidebarMobileOpen ? "translate-x-0" : "-translate-x-full"}
                           `}
@@ -145,7 +144,7 @@ export default function Sidebar() {
                                         {section.category}
                                     </p>
                                 ) : (
-                                    <hr className="my-2 border-(--primary)" />
+                                    <hr className="my-2 border-primary" />
                                 )}
 
                                 {/* Links */}
@@ -155,9 +154,9 @@ export default function Sidebar() {
                                         to={item.href}
                                         className={({ isActive }) =>
                                             `text-(--text) text-[13.5px] flex items-center ${isSidebarOpen ? "justify-start" : "justify-center"
-                                            } gap-2 py-1.5 px-2 rounded-md hover:bg-gray-900 dark:hover:bg-white/20 transition-all duration-200 ${isActive ? " bg-(--primary) text-(--textWhite)" : "bg-(--background)"}`
+                                            } gap-2 py-1.5 px-2 rounded-md hover:bg-gray-900 dark:hover:bg-white/20 transition-all duration-200 ${isActive ? " bg-primary text-(--textWhite)" : "bg-background"}`
                                         }
-                                        onClick={() => toggleMobileSidebar(false)}
+                                        onClick={() => setIsSidebarMobileOpen(false)}
                                     >
                                         {item.icon}
                                         {isSidebarOpen && <span>{item.label}</span>}
@@ -171,12 +170,12 @@ export default function Sidebar() {
             </div>
             {/* Desktop Sidebar */}
             <aside
-                className={`hidden lg:flex flex-col bg-(--background) text-(--text) transition-all duration-300 ${isSidebarOpen ? "w-64" : "w-16"
+                className={`hidden lg:flex flex-col bg-background text-(--text) transition-all duration-300 ${isSidebarOpen ? "w-64" : "w-16"
                     }`}
             >
                 <div className="flex items-center justify-center p-2.5 mt-2">
-                    {isSidebarOpen && <h1 className="font-semibold text-lg text-(--primary)">Dashboard</h1>}
-                    <button className="cursor-pointer" onClick={() => toggleSidebar(!isSidebarOpen)}>
+                    {isSidebarOpen && <h1 className="font-semibold text-lg text-primary">Dashboard</h1>}
+                    <button className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                         {isSidebarOpen ? null : <FaBars size={17} />}
                     </button>
                 </div>
@@ -189,7 +188,7 @@ export default function Sidebar() {
                                     {section.category}
                                 </p>
                             ) : (
-                                section.category === "Dashboard" ? null : <hr className="my-2 border-(--primary)" />
+                                section.category === "Dashboard" ? null : <hr className="my-2 border-primary" />
                             )}
 
                             {/* Links */}
@@ -197,7 +196,7 @@ export default function Sidebar() {
                                 <NavLink
                                     key={index}
                                     to={item.href}
-                                    className={({ isActive }) => `text-(--text) text-[13.5px] flex items-center mb-0.5 ${isSidebarOpen ? "justify-start" : "justify-center"} gap-2 py-1.5 px-2 rounded-md hover:bg-(--primary) transition-all duration-300 ${isActive ? " bg-(--primary) text-(--textWhite)" : "bg-(--background)"}`}
+                                    className={({ isActive }) => `text-(--text) text-[13.5px] flex items-center mb-0.5 ${isSidebarOpen ? "justify-start" : "justify-center"} gap-2 py-1.5 px-2 rounded-md hover:bg-primary transition-all duration-300 ${isActive ? " bg-primary text-(--textWhite)" : "bg-background"}`}
                                 >
                                     {item.icon}
                                     {isSidebarOpen && <span>{item.label}</span>}

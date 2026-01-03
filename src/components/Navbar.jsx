@@ -1,24 +1,16 @@
 import { useEffect, useRef } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsChatLeft } from "react-icons/bs";
 import { RiNotification3Line } from "react-icons/ri";
 import { MdKeyboardArrowDown } from "react-icons/md";
-
 import NavButton from "@/components/NavButton";
 import NavPopups from "@/components/NavPopups";
 import Tooltip from "@/components/Tooltip";
-// import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-// import avatar from "../data/avatar.jpg";
-
-
 import { BsLayoutSidebarInset } from "react-icons/bs";
-import { useSidebar } from "@/contexts/SidebarContext";
 import { useUi } from "@/contexts/UIContext";
 import myimage from "@/assets/mypic.jpg";
 
-export default function Navbar() {
-  const { isSidebarOpen, toggleSidebar, isSidebarMobileOpen, toggleMobileSidebar } = useSidebar();
+export default function Navbar({ isSidebarOpen, setIsSidebarOpen, isSidebarMobileOpen, setIsSidebarMobileOpen }) {
   const { openPopup, closePopup } = useUi();
   const navRef = useRef(null);
   const popupRef = useRef(null);
@@ -41,13 +33,13 @@ export default function Navbar() {
   }, [closePopup]);
 
   return (
-    <nav className={`flex items-center justify-between relative px-2 py-3 md:p-4  bg-background text-(--text) w-full transition-all duration-300 ${isSidebarMobileOpen ? "shadow-none" : "custom-navbar-shadow"} `} style={{ zIndex: '1000' }}>
+    <nav className={`${isSidebarOpen ? "w-[calc(100%-256px)] ms-64" : "w-[calc(100%-64px)] ms-16"} flex items-center justify-between relative px-2 py-3 md:p-4  bg-background text-(--text)  transition-all duration-300 ${isSidebarMobileOpen ? "shadow-none" : "custom-navbar-shadow"} `} style={{ zIndex: '1001' }}>
       <div>
-        <button className="hidden lg:block cursor-pointer" onClick={toggleSidebar}>
+        <button className="hidden lg:block cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
           < BsLayoutSidebarInset className={`${isSidebarOpen ? "visible" : "invisible"} w-4 h-4`} />
         </button>
         <div className="lg:hidden  cursor-pointer w-full  flex items-center px-4 z-20">
-          <button onClick={toggleMobileSidebar}>
+          <button onClick={() => setIsSidebarMobileOpen(!isSidebarMobileOpen)} className="text-(--text)">
             <BsLayoutSidebarInset className="w-4 h-4" />
           </button>
         </div>

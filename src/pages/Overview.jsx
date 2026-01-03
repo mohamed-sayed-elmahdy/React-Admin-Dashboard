@@ -1,32 +1,16 @@
+import React from "react";
 import {
-  BarChart,
-  Bar,
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-} from "recharts"
-import {
-  TrendingUp,
-  TrendingDown,
   DollarSign,
   ShoppingCart,
   Users,
   TrendingUpIcon,
   Download,
   Calendar,
-} from "lucide-react"
-// Custom Tooltip style
-const darkTooltipStyle = {
-  backgroundColor: "#000",
-  border: "1px solid white",
-  borderRadius: "12px",
-  color: "#fff",
-};
+} from "lucide-react";
+import KPICard from "@/components/KPICard";
+import TrafficSourceItem from "@/components/TrafficSourceItem";
+import ChartsSection  from "@/components/ChartsSection";
+
 
 // Mock data for Revenue Chart
 const revenueData = [
@@ -40,7 +24,7 @@ const revenueData = [
 ]
 
 // Mock data for User Activity
-const userActivityData = [
+export const userActivityData = [
   { date: "Mon", active: 1200, new: 340 },
   { date: "Tue", active: 1800, new: 420 },
   { date: "Wed", active: 1600, new: 380 },
@@ -67,52 +51,6 @@ const transactions = [
   { id: 5, user: "Anna Martinez", status: "Paid", amount: "$4,200", date: "Dec 16, 2025" },
 ]
 
-// KPI Card Component
-function KPICard({ title, value, change, isPositive, icon: Icon }) {
-  return (
-    <div className="bg-white border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-200">
-      <div className="flex items-start justify-between">
-        <div className="flex-1">
-          <p className="text-sm text-gray-500 font-medium mb-2">{title}</p>
-          <p className="text-3xl font-semibold text-(--text) mb-3">{value}</p>
-          <div className="flex items-center gap-1.5">
-            {isPositive ? (
-              <TrendingUp className="w-4 h-4 text-emerald-500" />
-            ) : (
-              <TrendingDown className="w-4 h-4 text-rose-500" />
-            )}
-            <span className={`text-sm font-medium ${isPositive ? "text-emerald-500" : "text-rose-500"}`}>{change}</span>
-            <span className="text-sm text-gray-500">vs last month</span>
-          </div>
-        </div>
-        <div className={`p-3 rounded-lg ${isPositive ? "bg-emerald-500/10" : "bg-rose-500/10"}`}>
-          <Icon className={`w-6 h-6 ${isPositive ? "text-emerald-500" : "text-rose-500"}`} />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// Traffic Source Item Component
-function TrafficSourceItem({ name, percentage, color }) {
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between text-sm">
-        <div className="flex items-center gap-2">
-          <div className={`w-3 h-3 rounded-full ${color}`} />
-          <span className="text-(--text) font-medium">{name}</span>
-        </div>
-        <span className="text-gray-500 font-medium">{percentage}%</span>
-      </div>
-      <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-        <div
-          className={`h-full ${color} transition-all duration-500 ease-out rounded-full`}
-          style={{ width: `${percentage}%` }}
-        />
-      </div>
-    </div>
-  )
-}
 
 // Status Badge Component
 function StatusBadge({ status }) {
@@ -131,7 +69,7 @@ function StatusBadge({ status }) {
   )
 }
 
-export default function Overview() {
+function Overview() {
   return (
     <div>
       <div className="mx-auto px-2 py-4">
@@ -143,11 +81,11 @@ export default function Overview() {
               <p className="text-gray-600">Track your business performance and key metrics</p>
             </div>
             <div className="flex items-center gap-3">
-              <button className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-(--text) hover:bg-accent transition-colors text-sm font-medium">
+              <button className="cursor-pointer inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-white text-(--text) hover:bg-gray-100 transition-all text-sm font-medium duration-300 shadow-sm">
                 <Calendar className="w-4 h-4" />
                 Last 7 days
               </button>
-              <button className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-all text-sm font-medium shadow-sm">
+              <button className="cursor-pointer inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white hover:bg-(--accent) transition-all text-sm font-medium duration-300 shadow-sm">
                 <Download className="w-4 h-4" />
                 Export Report
               </button>
@@ -164,92 +102,7 @@ export default function Overview() {
         </div>
 
         {/* Charts Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
-          {/* Revenue Overview Chart */}
-          <div className="bg-white border border-border rounded-lg p-6">
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-(--text) mb-1">Revenue Overview</h3>
-              <p className="text-sm text-gray-500">Monthly revenue and order trends</p>
-            </div>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={revenueData} >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis
-                  dataKey="month"
-                  stroke="oklch(0.5 0 0)"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={false}
-                />
-                <YAxis
-                  stroke="oklch(0.5 0 0)"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={false}
-                  tickFormatter={(value) => `$${value / 1000}k`}
-                />
-                <Tooltip
-                  contentStyle={darkTooltipStyle}
-                  formatter={(value) => [`$${value.toLocaleString()}`, "Revenue"]}
-                />
-                <Bar dataKey="revenue" fill="#c48d3b" radius={[6, 6, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-
-          {/* User Activity Chart */}
-          <div className="bg-white border border-border rounded-lg p-6">
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-(--text) mb-1">User Activity</h3>
-              <p className="text-sm text-gray-500">Active and new users this week</p>
-            </div>
-            <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={userActivityData}>
-                <defs>
-                  <linearGradient id="activeGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#c48d3b" stopOpacity={0.8} />
-                    <stop offset="30%" stopColor="#c48d3b" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#c48d3b" stopOpacity={0} />
-                  </linearGradient>
-                  <linearGradient id="newGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#685431" stopOpacity={0.6} />
-                    <stop offset="95%" stopColor="#8b7041" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-                <XAxis
-                  dataKey="date"
-                  stroke="oklch(0.5 0 0)"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={false}
-
-                />
-                <YAxis stroke="oklch(0.5 0 0)" fontSize={12} tickLine={false} axisLine={false} />
-                <Tooltip
-                  contentStyle={darkTooltipStyle}
-                />
-                <Legend wrapperStyle={{ paddingTop: "10px", }} iconType="circle" />
-                <Area
-                  type="monotone"
-                  dataKey="active"
-                  stroke=""
-                  fill="url(#activeGradient)"
-                  strokeWidth={2}
-                  name="Active Users"
-                />
-                <Area
-                  type="monotone"
-                  dataKey="new"
-                  stroke=""
-                  fill="url(#newGradient)"
-                  strokeWidth={2}
-                  name="New Users"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
+    <ChartsSection  revenueData={revenueData} userActivityData={userActivityData}/>
 
         {/* Bottom Section: Traffic Sources & Transactions */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -286,7 +139,7 @@ export default function Overview() {
                   {transactions.map((transaction) => (
                     <tr
                       key={transaction.id}
-                      className="border-b border-border last:border-0 hover:bg-accent/50 transition-all duration-200 ease-in-out"
+                      className="border-b border-border last:border-0 hover:bg-primary/10 transition-all duration-200 ease-in-out"
                     >
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-3">
@@ -314,5 +167,7 @@ export default function Overview() {
         </div>
       </div>
     </div>
-  )
+  );
 }
+export default Overview;
+
