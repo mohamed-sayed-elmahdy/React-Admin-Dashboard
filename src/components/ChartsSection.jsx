@@ -9,11 +9,11 @@ const darkTooltipStyle = {
   color: "#fff",
 };
 
-const ChartsSection = React.memo(function ChartsSection({ revenueData, userActivityData }) {
+const ChartsSection = React.memo(function ChartsSection() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
-      <RevenueChart data={revenueData} tooltipStyle={darkTooltipStyle} />
-      <UserActivityChart data={userActivityData} tooltipStyle={darkTooltipStyle} />
+      <RevenueChart  tooltipStyle={darkTooltipStyle} />
+      <UserActivityChart  tooltipStyle={darkTooltipStyle} />
     </div>
   )
 })

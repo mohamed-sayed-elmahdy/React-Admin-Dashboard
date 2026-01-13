@@ -9,30 +9,10 @@ import {
 } from "lucide-react";
 import KPICard from "@/components/KPICard";
 import TrafficSourceItem from "@/components/TrafficSourceItem";
-import ChartsSection  from "@/components/ChartsSection";
+import ChartsSection from "@/components/ChartsSection";
 
 
-// Mock data for Revenue Chart
-const revenueData = [
-  { month: "Jan", revenue: 45000, orders: 230 },
-  { month: "Feb", revenue: 52000, orders: 280 },
-  { month: "Mar", revenue: 48000, orders: 250 },
-  { month: "Apr", revenue: 61000, orders: 320 },
-  { month: "May", revenue: 55000, orders: 290 },
-  { month: "Jun", revenue: 67000, orders: 350 },
-  { month: "Jul", revenue: 72000, orders: 380 },
-]
 
-// Mock data for User Activity
-export const userActivityData = [
-  { date: "Mon", active: 1200, new: 340 },
-  { date: "Tue", active: 1800, new: 420 },
-  { date: "Wed", active: 1600, new: 380 },
-  { date: "Thu", active: 2100, new: 510 },
-  { date: "Fri", active: 2400, new: 600 },
-  { date: "Sat", active: 2000, new: 490 },
-  { date: "Sun", active: 1700, new: 410 },
-]
 
 // Traffic sources
 const trafficSources = [
@@ -102,7 +82,7 @@ function Overview() {
         </div>
 
         {/* Charts Section */}
-    <ChartsSection  revenueData={revenueData} userActivityData={userActivityData}/>
+        <ChartsSection />
 
         {/* Bottom Section: Traffic Sources & Transactions */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

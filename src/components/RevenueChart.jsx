@@ -1,4 +1,4 @@
-import { userActivityData } from "@/pages/Overview";
+
 import {
     BarChart,
     Bar,
@@ -10,7 +10,21 @@ import {
 
 } from "recharts"
 import React from "react";
-export default React.memo(function RevenueChart({tooltipStyle, data}) {
+
+// Mock data for Revenue Chart
+const revenueData = [
+  { month: "Jan", revenue: 45000, orders: 230 },
+  { month: "Feb", revenue: 52000, orders: 280 },
+  { month: "Mar", revenue: 48000, orders: 250 },
+  { month: "Apr", revenue: 61000, orders: 320 },
+  { month: "May", revenue: 55000, orders: 290 },
+  { month: "Jun", revenue: 67000, orders: 350 },
+  { month: "Jul", revenue: 72000, orders: 380 },
+]
+
+
+
+export default React.memo(function RevenueChart({tooltipStyle}) {
 
     return (
         <>
@@ -20,7 +34,7 @@ export default React.memo(function RevenueChart({tooltipStyle, data}) {
                     <p className="text-sm text-gray-500">Monthly revenue and order trends</p>
                 </div>
                 <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={data} >
+                    <BarChart data={revenueData} >
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
                         <XAxis
                             dataKey="month"
