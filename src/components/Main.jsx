@@ -16,13 +16,14 @@ function Main() {
         ${isSidebarOpen 
           ? "lg:w-[calc(100%-256px)] lg:ms-64" 
           : "lg:w-[calc(100%-64px)] lg:ms-16"}
-        min-h-screen flex flex-col bg-(--background-secondary)
-        overflow-hidden transition-all duration-300
+        h-full flex flex-col 
+        overflow-auto transition-all duration-300
       `}
     >
       <div
         className={`
           transition-all duration-500 ease-out
+          flex justify-between flex-col min-h-screen
           ${mounted 
             ? "opacity-100 translate-y-0" 
             : "opacity-0 translate-y-6"}

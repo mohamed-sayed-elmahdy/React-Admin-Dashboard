@@ -10,6 +10,7 @@ const Employees = lazy(() => import('@/pages/Employees'));
 const Customers = lazy(() => import('@/pages/Customers'));
 const Editor = lazy(() => import('@/pages/Apps/Editor'));
 const Calendar = lazy(() => import('@/pages/Apps/Calendar'));
+const CalendergEx = lazy(() => import('@/pages/Apps/CalendergEx'));
 const Kanban = lazy(() => import('@/pages/Apps/Kanban'));
 const ColorPicker = lazy(() => import('@/pages/Apps/ColorPicker'));
 const Line = lazy(() => import('@/pages/Charts/Line'));
@@ -28,6 +29,7 @@ const routes = [
   { path: '/employees', element: <Employees /> },
   { path: '/customers', element: <Customers /> },
   { path: '/calendar', element: <Calendar /> },
+  { path: '/calendar-ex', element: <CalendergEx /> },
   { path: '/kanban', element: <Kanban /> },
   { path: '/editor', element: <Editor /> },
   { path: '/color-picker', element: <ColorPicker /> },

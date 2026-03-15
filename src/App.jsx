@@ -1,11 +1,13 @@
 import { useState } from 'react';
+
 import { Routes, Route } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Tooltip from '@/components/Tooltip';
 import Sidebar from '@/components/Sidebar';
 import { FiSettings } from 'react-icons/fi';
-import {
+
+import  {
   Overview,
   Orders,
   Employees,
@@ -42,7 +44,7 @@ const { isSidebarOpen, isSidebarMobileOpen, toggleSidebar, toggleMobileSidebar, 
       </div>
       <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={toggleSidebar} isSidebarMobileOpen={isSidebarMobileOpen} setIsSidebarMobileOpen={toggleMobileSidebar} />
 
-      <div className='fixed h-full sidebar z-50 bg-background' style={{ zIndex: 1000, boxShadow: '2px -14px 15px rgba(0, 0, 0, 0.2)' }} >
+      <div className='fixed h-full sidebar z-50 bg-background overflow-y-auto' style={{ zIndex: 1000, boxShadow: '2px -14px 15px rgba(0, 0, 0, 0.2)' }} >
         <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={toggleSidebar} isSidebarMobileOpen={isSidebarMobileOpen} setIsSidebarMobileOpen={toggleMobileSidebar} />
       </div>
 

@@ -51,6 +51,11 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen, isSidebarMobi
                     icon: <FaCalendarAlt size={16} />,
                 },
                 {
+                    label: "Calendar Ex",
+                    href: "/calendar-ex",
+                    icon: <FaCalendarAlt size={16} />,
+                },
+                {
                     label: "Kanban",
                     href: "/kanban",
                     icon: <FaProjectDiagram size={16} />,
