@@ -1,8 +1,10 @@
-import React from 'react'
+import TextEditor from "@/components/TextEditor/TextEditor"
 
 function Editor() {
   return (
-    <div>Editor</div>
+    <div>
+      <TextEditor />
+    </div>
   )
 }
 
